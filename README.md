@@ -1,0 +1,2 @@
+# Vava
+This is a simple Discord bot built using Python. It was created for personal use and contains various commands to generate jokes, quotes, riddles, trivia, facts, and other fun things. The bot is easily customizable, allowing you to add new commands and functionality as needed.
