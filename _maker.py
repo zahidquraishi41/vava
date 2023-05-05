@@ -47,6 +47,7 @@ def update_list():
 
     apis = [api.rsplit('.', 1)[0] for api in os.listdir(api_dir)
             if api.endswith('.py') and api != '__init__.py']
+    apis.sort()
 
     try:
         with open(init_path, 'w') as f:
