@@ -6,6 +6,9 @@ class APIBase:
     An interface for all api.
     """
 
+    def __init__(self, priority: int = 5) -> None:
+        self.priority = priority
+
     def validate(self, msg: dc.Message):
         """
         Check if the message matches the command.
