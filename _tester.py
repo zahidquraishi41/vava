@@ -3,8 +3,8 @@ from api.helper.message import Message
 
 
 def api_test(msg):
-    from api.encourage import Encourage
-    api = Encourage()
+    from api.gibberish import Gibberish
+    api = Gibberish()
 
     if api.validate(msg):
         return api.run(msg)
