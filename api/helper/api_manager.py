@@ -44,4 +44,4 @@ class APIManager:
             if api.validate(msg):
                 output = api.run(msg)
                 output = output if output else ''
-        return output
+            return output
