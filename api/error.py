@@ -25,9 +25,9 @@ class Error(APIBase):
         )
 
     def validate(self, msg: Message):
-        # There is 10% that it'll be executed on random
+        # There is 5% that it'll be executed on random
         return msg.command == 'error' or \
-            random.choices([True, False], [0.10, 0.90], k=1)[0]
+            random.choices([True, False], [0.05, 0.95], k=1)[0]
 
     def run(self,  msg: Message):
         return random.choice(self.messages)
