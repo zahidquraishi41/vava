@@ -1,6 +1,7 @@
 from api.helper.api_manager import APIManager
 
 from api.activate import Activate
+from api.advice import Advice
 from api.encourage import Encourage
 from api.error import Error
 from api.gibberish import Gibberish
@@ -10,6 +11,7 @@ from api.joke import Joke
 api_manager = APIManager()
 
 api_manager.register(Activate())
+api_manager.register(Advice())
 api_manager.register(Encourage())
 api_manager.register(Error())
 api_manager.register(Gibberish())
