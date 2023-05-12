@@ -1,4 +1,5 @@
 from api import api_manager
+from api.helper.message import Message
 from api.error import Error
 import discord as dc
 from datetime import datetime as dt
@@ -24,7 +25,8 @@ async def on_message(message):
     reply = message.channel.send
 
     try:
-        out = api_manager.execute(message)
+        msg = Message(message)
+        out = api_manager.execute(msg)
         if out:
             await reply(out)
     except:

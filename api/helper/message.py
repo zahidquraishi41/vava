@@ -17,7 +17,7 @@ class Message:
         """
         if message:
             self.author = message.author.name
-            self.is_admin = self.author_name == 'knemkaos'
+            self.is_admin = self.author == 'knemkaos'
             self.content = message.content.lower().strip()
 
     @property
