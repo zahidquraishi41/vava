@@ -12,6 +12,7 @@ from api.insult import Insult
 from api.joke import Joke
 from api.praise import Praise
 from api.quote import Quote
+from api.riddle import Riddle
 
 api_manager = APIManager()
 
@@ -27,3 +28,4 @@ api_manager.register(Insult())
 api_manager.register(Joke())
 api_manager.register(Praise())
 api_manager.register(Quote())
+api_manager.register(Riddle())
