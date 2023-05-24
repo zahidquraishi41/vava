@@ -5,6 +5,7 @@ from api.advice import Advice
 from api.dad import Dad
 from api.encourage import Encourage
 from api.error import Error
+from api.excuser import Excuser
 from api.fact import Fact
 from api.gibberish import Gibberish
 from api.greet import Greet
@@ -21,6 +22,7 @@ api_manager.register(Advice())
 api_manager.register(Dad())
 api_manager.register(Encourage())
 api_manager.register(Error())
+api_manager.register(Excuser())
 api_manager.register(Fact())
 api_manager.register(Gibberish())
 api_manager.register(Greet())
