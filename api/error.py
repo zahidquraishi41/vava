@@ -6,7 +6,7 @@ import random
 class Error(APIBase):
 
     def __init__(self) -> None:
-        super().__init__(4)
+        self.priority = 4
         self.messages = (
             'Here is a peanut for you! happy now :3',
             '...',
