@@ -6,7 +6,7 @@ from api.greet import Greet
 class Activate(APIBase):
 
     def __init__(self) -> None:
-        super().__init__(1)
+        self.priority = 1
         self.active = True
 
     def validate(self, msg: Message):

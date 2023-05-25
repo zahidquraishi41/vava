@@ -5,8 +5,9 @@ from gibberish import Gibberish as Gib
 
 
 class Gibberish(APIBase):
+
     def __init__(self) -> None:
-        super().__init__(6)
+        self.priority = 6
 
     def validate(self, msg: Message):
         return msg.content.startswith('vava ')

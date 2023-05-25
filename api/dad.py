@@ -5,8 +5,8 @@ from api.helper.message import Message
 class Dad(APIBase):
 
     def __init__(self) -> None:
+        self.priority = 6
         self.enabled = True
-        super().__init__(6)
 
     def validate(self, msg: Message):
         return (

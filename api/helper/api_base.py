@@ -5,9 +5,7 @@ class APIBase:
     """
     An interface for all api.
     """
-
-    def __init__(self, priority: int = 5) -> None:
-        self.priority = priority
+    priority = 5
 
     def validate(self, msg: dc.Message):
         """
