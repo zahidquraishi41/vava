@@ -11,7 +11,7 @@ class Dad(APIBase):
     def validate(self, msg: Message):
         return (
             (msg.command == 'dad enable' or msg.command == 'dad disable') or
-            (self.enabled and ("i'm " in msg.msg or 'i am ' in msg.msg))
+            (self.enabled and ("i'm " in msg.content or 'i am ' in msg.content))
         )
 
     def run(self,  msg: Message):
