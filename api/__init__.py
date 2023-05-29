@@ -2,6 +2,7 @@ from api.helper.api_manager import APIManager
 
 from api.activate import Activate
 from api.advice import Advice
+from api.cat import Cat
 from api.dad import Dad
 from api.encourage import Encourage
 from api.error import Error
@@ -19,6 +20,7 @@ api_manager = APIManager()
 
 api_manager.register(Activate())
 api_manager.register(Advice())
+api_manager.register(Cat())
 api_manager.register(Dad())
 api_manager.register(Encourage())
 api_manager.register(Error())
