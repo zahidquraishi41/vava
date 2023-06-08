@@ -1,5 +1,6 @@
 import discord as dc
 
+
 class Message:
     """
     Extracts essential information from a discord.Message object.
@@ -19,6 +20,7 @@ class Message:
             self.author = message.author.name
             self.is_admin = self.author == 'knemkaos'
             self.content = message.content.lower().strip()
+            self.mentions = message.mentions
 
     @property
     def is_command(self):
@@ -42,7 +44,7 @@ class Message:
             return self.content[5:]
         return ''
 
-    def testInstance(content=None, author=None, is_admin=None):
+    def testInstance(content=None, author=None, is_admin=None, mentions=None):
         """
         Creates a Message instance for debugging purposes.
 
@@ -58,4 +60,5 @@ class Message:
         msg.author = author
         msg.is_admin = is_admin
         msg.content = content.lower().strip()
+        msg.mentions = mentions if mentions else []
         return msg
