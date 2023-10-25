@@ -9,6 +9,7 @@ class Trivia(APIBase):
         super().__init__()
         self.answer = ''
         self.difficulty = 'easy'
+        self.buffer = []
 
     def validate(self, msg: Message):
         return msg.command in (
