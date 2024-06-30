@@ -29,11 +29,12 @@ async def on_message(message):
         out = api_manager.execute(msg)
         if out:
             await reply(out)
-    except:
-        with open('error.log', 'a') as f:
-            f.write(str(dt.now()) + '\n')
-            traceback.print_exc(file=f)
-            f.write('\n\n')
+    except Exception as e:
+        print('\n')
+        print(dt.now())
+        print(e)
+        print('User command: ', message.content)
+        print('\n')
         await reply(error.run(None))
 
 
