@@ -16,3 +16,4 @@ requests==2.29.0
 tomli==2.0.1
 urllib3==1.26.15
 yarl==1.9.2
+flask
