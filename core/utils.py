@@ -5,7 +5,7 @@ import json
 
 
 def fetch(url: str, keys: Any = None, headers: dict = None) -> Any:
-    '''
+    """
     Sends a GET request to the provided URL, parses the JSON response,
     and returns the value of the specified key(s).
 
@@ -13,14 +13,14 @@ def fetch(url: str, keys: Any = None, headers: dict = None) -> Any:
         url : The URL to send the GET request to.
         keys : The key(s) to fetch from the JSON data.
             If None, the entire JSON data is returned. Defaults to None.
-        headers : Dictionary of HTTP headers to be sent with the request. 
+        headers : Dictionary of HTTP headers to be sent with the request.
             Defaults to None.
 
     Returns:
         If a single key is provided, the value for that key is returned.
         If multiple keys are provided, a list of values for those keys is returned.
         If no keys are provided, the entire JSON data is returned.
-    '''
+    """
     response = requests.get(url, headers=headers)
     json_data = json.loads(response.text)
 
@@ -33,7 +33,7 @@ def fetch(url: str, keys: Any = None, headers: dict = None) -> Any:
         keys = [keys]
 
     for key in keys:
-        sub_keys = key.split('.')
+        sub_keys = key.split(".")
         val = json_data
         for sub_key in sub_keys:
             if isinstance(val, list) and sub_key.isdigit():
@@ -46,7 +46,7 @@ def fetch(url: str, keys: Any = None, headers: dict = None) -> Any:
 
 
 def is_similar(s1: str, s2: str) -> bool:
-    '''
+    """
     Determines if two strings are similar based on the ratio of their longest common subsequence.
 
     Args:
@@ -55,7 +55,6 @@ def is_similar(s1: str, s2: str) -> bool:
 
     Returns:
         bool: True if the ratio of the longest common subsequence is greater than or equal to 0.7, False otherwise.
-    '''
+    """
     ratio = difflib.SequenceMatcher(a=s1, b=s2).ratio()
     return ratio >= 0.7
-

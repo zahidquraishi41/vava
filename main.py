@@ -12,7 +12,7 @@ manager = APIHandler()
 
 @client.event
 async def on_ready():
-    print(f'We have logged in as {client.user}')
+    print(f"We have logged in as {client.user}")
 
 
 @client.event
@@ -30,6 +30,7 @@ async def on_message(message: dc.Message):
     except Exception as e:
         await reply(e)
 
+
 load_dotenv()
 keep_alive()
-client.run(os.getenv('VAVA_TOKEN'))
+client.run(os.getenv("VAVA_TOKEN"))
