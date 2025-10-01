@@ -21,6 +21,7 @@ async def on_message(message: dc.Message):
         return
 
     reply = message.channel.send
+    out = None
     try:
         out = manager.process(message)
         if out:
@@ -28,7 +29,11 @@ async def on_message(message: dc.Message):
     except KeyboardInterrupt:
         return
     except Exception as e:
+        out = e
         await reply(e)
+    finally:
+        if out:
+            print(f"In: {message.content} | Out: {out} | By: {message.author.name}")
 
 
 load_dotenv()
