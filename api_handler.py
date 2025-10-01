@@ -22,6 +22,8 @@ class Wrapper:
 class APIHandler:
     def __init__(self) -> None:
         self._apis = [Wrapper(cls) for cls in apis]
+        self._apis.sort()
+        self.last_cmd = None
 
     def _ping(self, cmd: Command) -> bool:
         if not cmd.is_admin:
@@ -90,9 +92,18 @@ class APIHandler:
             cmd.output = self._help(cmd)
         elif cmd.command == "ping":
             cmd.output = self._ping(cmd)
+        elif cmd.command == ".":
+            if self.last_cmd:
+                cmd = self.last_cmd
+            else:
+                cmd.output = "No command to repeat"
 
         # api commands
         for api in self._apis:
             if api.active and api.instance.validate(cmd):
                 cmd.output = api.instance.run(cmd)
+
+        if not cmd.command == ".":
+            self.last_cmd = cmd
+
         return cmd.output
