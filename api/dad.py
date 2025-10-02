@@ -1,5 +1,6 @@
 from core.base_api import BaseAPI
 from core.command import Command
+import re
 
 
 class Dad(BaseAPI):
@@ -10,14 +11,12 @@ class Dad(BaseAPI):
     def __init__(self) -> None:
         super().__init__()
         self.priority = 6
+        self.pattern = re.compile(r"\b(?:i am|i['’]?m)\b\s+(.*)", re.IGNORECASE)
 
     def validate(self, cmd: Command) -> bool:
-        return "i'm " in cmd.message or "i am " in cmd.message or "im" in cmd.message
+        return self.pattern.search(cmd.message)
 
     def run(self, cmd: Command) -> str:
-        if "i'm " in cmd.message:
-            user = cmd.message.split("i'm ", 1)[1]
-        else:
-            user = cmd.message.split("i am ", 1)[1]
-
-        return f"Hello {user}, I am vava"
+        match = self.pattern.search(cmd.message)
+        if match and match.group(1).strip():
+            return f"Hello {match.group(1).strip()}, I am vava"
