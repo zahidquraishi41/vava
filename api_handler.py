@@ -103,7 +103,7 @@ class APIHandler:
             if api.active and api.instance.validate(cmd):
                 cmd.output = api.instance.run(cmd)
 
-        if not cmd.command == ".":
+        if cmd.is_command and cmd.command not in (".", "idk"):
             self.last_cmd = cmd
 
         return cmd.output
