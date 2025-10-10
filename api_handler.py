@@ -71,8 +71,7 @@ class APIHandler:
         names = [api.name for api in self._apis]
         if not cmd.param:
             s = "List of commands:"
-            names.sort()
-            return s + "\n" + "\n".join(names)
+            return s + "\n" + "\n".join(sorted(names))
 
         if cmd.param not in names:
             return f"{cmd.param} is not a valid command."
