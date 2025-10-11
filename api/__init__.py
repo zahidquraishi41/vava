@@ -9,6 +9,7 @@ from api.fact import Fact
 from api.greet import Greet
 from api.insult import Insult
 from api.joke import Joke
+from api.praise import Praise
 from api.riddle import Riddle
 from api.rizz import Rizz
 
@@ -24,6 +25,7 @@ apis = (
     Greet,
     Insult,
     Joke,
+    Praise,
     Riddle,
     Rizz,
 )
