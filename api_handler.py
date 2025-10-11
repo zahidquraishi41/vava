@@ -21,8 +21,8 @@ class Wrapper:
 
 class APIHandler:
     def __init__(self) -> None:
-        self._apis = [Wrapper(cls) for cls in apis]
-        self._apis.sort()
+        self.apis = [Wrapper(cls) for cls in apis]
+        self.apis.sort()
         self.last_cmd = None
 
     def _ping(self, cmd: Command) -> bool:
@@ -30,13 +30,13 @@ class APIHandler:
             return "Admin privilege is required."
 
         if cmd.param != "all":
-            if cmd.param not in self._apis:
+            if cmd.param not in self.apis:
                 return f"{cmd.param} is not a valid command."
-            i = self._apis.index(cmd.param)
-            return self._apis[i].instance.ping()
+            i = self.apis.index(cmd.param)
+            return self.apis[i].instance.ping()
 
         outputs = []
-        for api in self._apis:
+        for api in self.apis:
             outputs.append(f"{api.name} {api.instance.ping()}")
         return "\n".join(outputs)
 
@@ -44,8 +44,8 @@ class APIHandler:
         if not cmd.is_admin:
             return "Admin privilege is required."
 
-        if cmd.param in self._apis:
-            api = self._apis[self._apis.index(cmd.param)]
+        if cmd.param in self.apis:
+            api = self.apis[self.apis.index(cmd.param)]
             if cmd.command == "enable":
                 if api.active:
                     return "The command is already enabled. No changes were made."
@@ -59,16 +59,16 @@ class APIHandler:
 
         if cmd.command.startswith("enable"):
             s = "List of enabled commands:"
-            enabled = [api.name for api in self._apis if api.active]
+            enabled = [api.name for api in self.apis if api.active]
             return s + "\n" + "\n".join(enabled)
 
         else:
             s = "List of enabled commands:"
-            disabled = [api.name for api in self._apis if not api.active]
+            disabled = [api.name for api in self.apis if not api.active]
             return s + "\n" + "\n".join(disabled)
 
     def _help(self, cmd: Command) -> str:
-        names = [api.name for api in self._apis]
+        names = [api.name for api in self.apis]
         if not cmd.param:
             s = "List of commands:"
             return s + "\n" + "\n".join(sorted(names))
@@ -77,7 +77,7 @@ class APIHandler:
             return f"{cmd.param} is not a valid command."
 
         i = names.index(cmd.param)
-        doc = apis[i].__doc__ or "No document found."
+        doc = self.apis[i].instance.__doc__ or "No document found."
         doc = re.sub(r"(?<=\n) +", "", doc)
         return doc
 
@@ -98,7 +98,7 @@ class APIHandler:
                 cmd.output = "No command to repeat"
 
         # api commands
-        for api in self._apis:
+        for api in self.apis:
             if api.active and api.instance.validate(cmd):
                 cmd.output = api.instance.run(cmd)
 
