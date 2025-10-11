@@ -3,6 +3,7 @@ from api_handler import APIHandler
 import os
 from flask_app import keep_alive
 from dotenv import load_dotenv
+import asyncio
 
 intents = dc.Intents.default()
 intents.message_content = True
@@ -25,12 +26,17 @@ async def on_message(message: dc.Message):
     try:
         out = manager.process(message)
         if out:
-            await reply(out)
+            if isinstance(out, list):
+                for item in out:
+                    await reply(item)
+                    await asyncio.sleep(1)  # 1-second delay
+            else:
+                await reply(out)
     except KeyboardInterrupt:
         return
     except Exception as e:
         out = e
-        await reply(e)
+        await reply(str(e))
     finally:
         if out:
             print(f"In: {message.content} | Out: {out} | By: {message.author.name}")

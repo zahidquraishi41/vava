@@ -17,8 +17,8 @@ class Annoy(BaseAPI):
 
         count = cmd.param.split()[-1]
         count = int(count) if count.isdigit() else 5
-        if count > 30:
+        if count > 10:
             raise Exception("Mention count exceeds the top limit.")
 
         user = cmd.mentions[0].mention
-        return " ".join([user] * count)
+        return [user] * count
