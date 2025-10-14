@@ -23,6 +23,7 @@ class Babble(BaseAPI):
             sentence_length = int(cmd.param)
         else:
             sentence_length = random.randint(3, 7)
+        sentence_length = min(100, sentence_length)
 
         return " ".join(Gibberish().generate_words(sentence_length))
 
