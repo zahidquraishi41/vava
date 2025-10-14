@@ -13,7 +13,7 @@ class Praise(BaseAPI):
 
     def __init__(self):
         super().__init__()
-        self.templates_arr = [
+        self.templates_arr = (
             "I can tell ",
             "I must say ",
             "9 out of 10 experts say ",
@@ -31,9 +31,9 @@ class Praise(BaseAPI):
             "Guess what? ",
             "Seriously, ",
             "No doubt ",
-        ]
+        )
 
-        self.tangible_singular_props = [
+        self.tangible_singular_props = (
             "chin",
             "demeanour",
             "face",
@@ -83,9 +83,9 @@ class Praise(BaseAPI):
             "personality",
             "imagination",
             "passion",
-        ]
+        )
 
-        self.tangible_multiple_props = [
+        self.tangible_multiple_props = (
             "ankles",
             "calves",
             "clothes",
@@ -133,9 +133,9 @@ class Praise(BaseAPI):
             "insights",
             "visions",
             "values",
-        ]
+        )
 
-        self.adjectives = [
+        self.adjectives = (
             "adorable",
             "alluring",
             "amazing",
@@ -234,9 +234,9 @@ class Praise(BaseAPI):
             "enrapturing",
             "tasteful",
             "dashing",
-        ]
+        )
 
-        self.adverbs = [
+        self.adverbs = (
             "absolutely",
             "awfully",
             "completely",
@@ -314,7 +314,7 @@ class Praise(BaseAPI):
             "transcendently",
             "wondrously",
             "fabulously",
-        ]
+        )
 
     def get_descriptor(self):
         return f"{choice(self.adverbs)} {choice(self.adjectives)}"
@@ -336,7 +336,7 @@ class Praise(BaseAPI):
         return choice(full_templates)
 
     def validate(self, cmd: Command) -> bool:
-        return cmd.command == "babble" or (cmd.is_command and not cmd.output)
+        return cmd.command == "praise"
 
     def run(self, cmd: Command) -> str:
         name = cmd.param
