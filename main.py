@@ -1,7 +1,6 @@
 import discord as dc
 from api_handler import APIHandler
 import os
-from flask_app import keep_alive
 from dotenv import load_dotenv
 import asyncio
 
@@ -43,5 +42,4 @@ async def on_message(message: dc.Message):
 
 
 load_dotenv()
-keep_alive()
 client.run(os.getenv("VAVA_TOKEN"))
