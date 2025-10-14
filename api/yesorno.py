@@ -5,43 +5,86 @@ import re
 
 
 class YesOrNo(BaseAPI):
-    """Checks if the message is a yes/no question directed at Vava and returns a random yes/no style answer if true."""
+    """
+    Detects yes/no questions directed at Vava and returns a random yes/no style answer.
+    Uses context-aware verb+subject patterns to avoid false positives.
+    """
 
     def __init__(self):
         super().__init__()
         self.priority = 6
+
+        # Yes/no patterns (only valid question structures)
         self.yes_no_patterns = (
-            r"\bshould\b",
-            r"\bshud\b",
-            r"\bdo\b",
-            r"\bis\b",
-            r"\bare\b",
-            r"\bcan\b",
-            r"\bwill\b",
-            r"\bwould\b",
-            r"\bwud\b",
-            r"\bcould\b",
-            r"\bcud\b",
-            r"\bwas\b",
-            r"\bdid\b",
+            # Personal/self
+            r"\bam i\b",
+            r"\bdo i\b",
+            r"\bdid i\b",
+            r"\bhave i\b",
+            r"\bwas i\b",
+            r"\bwill i\b",
+            r"\bshould i\b",
+            r"\bcould i\b",
+            r"\bcan i\b",
+            r"\bwould i\b",
+            # General yes/no with pronouns
+            r"\bhas he\b",
+            r"\bhas she\b",
+            r"\bhave we\b",
+            r"\bhave you\b",
+            r"\bhave they\b",
+            r"\bis it\b",
+            r"\bare we\b",
+            r"\bare you\b",
+            r"\bis there\b",
+            r"\bwas it\b",
+            # Modal + pronoun
+            r"\bshould we\b",
+            r"\bshould you\b",
+            r"\bcan you\b",
+            r"\bcould you\b",
+            r"\bwill it\b",
+            r"\bwould it\b",
+            r"\bshall i\b",
+            r"\bmay i\b",
+            r"\bmight i\b",
+            r"\bmust i\b",
+            r"\bdo you\b",
+            r"\bdid you\b",
         )
+
+        # Natural yes/no responses
         self.responses = (
-            "Yes!",
-            "No",
-            "Absolutely",
-            "No way",
-            "Sure thing!",
-            "I don’t think so",
-            "Definitely!",
-            "Not really",
-            "Yup",
-            "Nah",
+            "Yes.",
+            "No.",
+            "Definitely.",
+            "No way.",
+            "I don’t think so.",
+            "Yup.",
+            "Nah.",
+            "Probably.",
+            "Maybe not.",
+            "Most likely.",
+            "Unlikely.",
         )
 
     def validate(self, cmd: Command):
-        if not re.search(r"\bvava\b", cmd.message):
+        message = cmd.message.lower().strip()
+
+        # Must mention Vava
+        if not re.search(r"\bvava\b", message):
             return False
-        return any(re.search(p, cmd.message) for p in self.yes_no_patterns)
+
+        # Ignore wh-questions
+        if re.search(r"\b(who|what|when|where|why|how)\b", message):
+            return False
+
+        # Only trigger if it contains a question mark
+        if "?" not in message:
+            return False
+
+        # Must match a yes/no pattern
+        return any(re.search(p, message) for p in self.yes_no_patterns)
 
     def run(self, cmd: Command):
         return random.choice(self.responses)
