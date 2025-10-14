@@ -10,7 +10,7 @@ class Dad(BaseAPI):
 
     def __init__(self) -> None:
         super().__init__()
-        self.priority = 6
+        self.priority = 1
         self.pattern = re.compile(r"\b(?:i am|i['’]?m)\b\s+(.*)", re.IGNORECASE)
 
     def validate(self, cmd: Command) -> bool:

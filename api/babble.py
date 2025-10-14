@@ -13,7 +13,7 @@ class Babble(BaseAPI):
 
     def __init__(self):
         super().__init__()
-        self.priority = 6
+        self.priority = 10
 
     def validate(self, cmd: Command) -> bool:
         return cmd.command == "babble" or (cmd.is_command and not cmd.output)
