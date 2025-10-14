@@ -12,6 +12,7 @@ from api.joke import Joke
 from api.praise import Praise
 from api.riddle import Riddle
 from api.rizz import Rizz
+from api.yesorno import YesOrNo
 
 apis = (
     Advice,
@@ -28,4 +29,5 @@ apis = (
     Praise,
     Riddle,
     Rizz,
+    YesOrNo,
 )
