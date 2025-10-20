@@ -16,41 +16,24 @@ class YesOrNo(BaseAPI):
 
         # Yes/no patterns (only valid question structures)
         self.yes_no_patterns = (
-            # Personal/self
-            r"\bam i\b",
-            r"\bdo i\b",
-            r"\bdid i\b",
-            r"\bhave i\b",
-            r"\bwas i\b",
-            r"\bwill i\b",
-            r"\bshould i\b",
-            r"\bcould i\b",
-            r"\bcan i\b",
-            r"\bwould i\b",
-            # General yes/no with pronouns
-            r"\bhas he\b",
-            r"\bhas she\b",
-            r"\bhave we\b",
-            r"\bhave you\b",
-            r"\bhave they\b",
-            r"\bis it\b",
-            r"\bare we\b",
-            r"\bare you\b",
-            r"\bis there\b",
-            r"\bwas it\b",
-            # Modal + pronoun
-            r"\bshould we\b",
-            r"\bshould you\b",
-            r"\bcan you\b",
-            r"\bcould you\b",
-            r"\bwill it\b",
-            r"\bwould it\b",
-            r"\bshall i\b",
-            r"\bmay i\b",
-            r"\bmight i\b",
-            r"\bmust i\b",
-            r"\bdo you\b",
-            r"\bdid you\b",
+            r"\bshall\b",
+            r"\bhave\b",
+            r"\bmay\b",
+            r"\bdid\b",
+            r"\bwill\b",
+            r"\bshould\b",
+            r"\bwould\b",
+            r"\bmust\b",
+            r"\bwas\b",
+            r"\bmight\b",
+            r"\bare\b",
+            r"\bdo\b",
+            r"\bdoes\b"
+            r"\bhas\b",
+            r"\bcan\b",
+            r"\bcould\b",
+            r"\bis\b",
+            r"\bam\b",
         )
 
         # Natural yes/no responses
@@ -77,10 +60,6 @@ class YesOrNo(BaseAPI):
 
         # Ignore wh-questions
         if re.search(r"\b(who|what|when|where|why|how)\b", message):
-            return False
-
-        # Only trigger if it contains a question mark
-        if "?" not in message:
             return False
 
         # Must match a yes/no pattern
