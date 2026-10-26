@@ -1,6 +1,7 @@
 from api.advice import Advice
 from api.annoy import Annoy
 from api.babble import Babble
+from api.cat import Cat
 from api.dad import Dad
 from api.decide import Decide
 from api.encourage import Encourage
@@ -19,6 +20,7 @@ apis = (
     Annoy,
     Babble,
     Dad,
+    Cat,
     Decide,
     Encourage,
     Excuse,

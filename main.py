@@ -1,9 +1,10 @@
-import discord as dc
-from api_handler import APIHandler
-import os
-from flask_app import keep_alive
-from dotenv import load_dotenv
 import asyncio
+import os
+
+import discord as dc
+from dotenv import load_dotenv
+
+from api_handler import APIHandler
 
 intents = dc.Intents.default()
 intents.message_content = True
