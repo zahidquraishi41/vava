@@ -21,10 +21,10 @@ class Cat(BaseAPI):
         text = None
         if cmd and cmd.param and " " in cmd.param:
             k, v = cmd.param.split(" ", 1)
-            if k == "saying":
+            if k in ("say", "says", "saying"):
                 text = v.strip() if v.strip() else None
         if text:
-            return fetch(f"{self.URL}/says/{quote(text)}", "url")
+            return fetch(f"{self.URL}/says/{quote(text)}?json=true", "url")
         return fetch(f"{self.URL}?json=true", "url")
 
     def ping(self) -> bool:
