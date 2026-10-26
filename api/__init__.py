@@ -6,6 +6,7 @@ from api.coffee import Coffee
 from api.dad import Dad
 from api.dad_joke import DadJoke
 from api.decide import Decide
+from api.duck import Duck
 from api.encourage import Encourage
 from api.excuse import Excuse
 from api.fact import Fact
@@ -19,6 +20,7 @@ from api.riddle import Riddle
 from api.rizz import Rizz
 from api.trivia import Trivia
 from api.woof import Woof
+from api.xkcd import XKCD
 from api.yesorno import YesOrNo
 
 apis = (
@@ -27,6 +29,7 @@ apis = (
     Babble,
     Dad,
     DadJoke,
+    Duck,
     Cat,
     Coffee,
     Decide,
@@ -43,5 +46,6 @@ apis = (
     Rizz,
     Trivia,
     Woof,
+    XKCD,
     YesOrNo,
 )
