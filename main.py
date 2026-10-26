@@ -43,5 +43,4 @@ async def on_message(message: dc.Message):
 
 
 load_dotenv()
-keep_alive()
-client.run(os.getenv("VAVA_TOKEN"))
+client.run(os.getenv("DISCORD_TOKEN"))
