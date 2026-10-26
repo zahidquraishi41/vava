@@ -2,8 +2,7 @@ from urllib.parse import quote
 
 from core.base_api import BaseAPI
 from core.command import Command
-from uuid import uuid4
-
+from core.utils import fetch
 
 
 class Cat(BaseAPI):
@@ -25,9 +24,8 @@ class Cat(BaseAPI):
             if k == "saying":
                 text = v.strip() if v.strip() else None
         if text:
-            return f"{self.URL}/says/{quote(text)}?cache={uuid4().hex}"
-
-        return f"{self.URL}?cache={uuid4().hex}"
+            return fetch(f"{self.URL}/says/{quote(text)}", "url")
+        return fetch(f"{self.URL}?json=true", "url")
 
     def ping(self) -> bool:
         return bool(self.run(None))
