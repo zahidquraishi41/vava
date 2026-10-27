@@ -11,6 +11,7 @@ from api.encourage import Encourage
 from api.excuse import Excuse
 from api.fact import Fact
 from api.fox import Fox
+from api.french import French
 from api.greet import Greet
 from api.insult import Insult
 from api.joke import Joke
@@ -37,6 +38,7 @@ apis = (
     Excuse,
     Fact,
     Fox,
+    French,
     Greet,
     Insult,
     Joke,
