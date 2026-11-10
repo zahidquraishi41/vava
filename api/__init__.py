@@ -17,6 +17,7 @@ from api.insult import Insult
 from api.joke import Joke
 from api.poem import Poem
 from api.praise import Praise
+from api.quote import Quote
 from api.riddle import Riddle
 from api.rizz import Rizz
 from api.trivia import Trivia
@@ -43,6 +44,7 @@ apis = (
     Insult,
     Joke,
     Poem,
+    Quote,
     Praise,
     Riddle,
     Rizz,

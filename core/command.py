@@ -1,5 +1,6 @@
-import discord as dc
 import os
+
+import discord as dc
 
 
 class Command:

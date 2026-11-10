@@ -1,5 +1,6 @@
-from core.command import Command
 from abc import ABC, abstractmethod
+
+from core.command import Command
 
 
 class BaseAPI(ABC):
