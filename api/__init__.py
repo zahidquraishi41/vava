@@ -15,7 +15,6 @@ from api.french import French
 from api.greet import Greet
 from api.insult import Insult
 from api.joke import Joke
-from api.meme import Meme
 from api.poem import Poem
 from api.praise import Praise
 from api.quote import Quote
@@ -44,7 +43,6 @@ apis = (
     Greet,
     Insult,
     Joke,
-    Meme,
     Poem,
     Quote,
     Praise,
